@@ -60,7 +60,7 @@ public class ItemESMessageListener implements MessageListener {
 			TransportClient client = new PreBuiltTransportClient(settings)
 					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(ES_CONNECT_IP), 9300));
 
-			if(text[0].equals("add")){
+			if("add".equals(text[0])){
 				//根据商品id查询商品信息
 				SearchItem searchItem = itemMapper.getItemById(itemId);
 				String image=searchItem.getProductImageBig();
@@ -82,7 +82,7 @@ public class ItemESMessageListener implements MessageListener {
 								.field("category_name", searchItem.getCategory_name())
 								.endObject()
 						).get();
-			}else if(text[0].equals("delete")){
+			}else if("delete".equals(text[0])){
 				DeleteResponse deleteResponse = client.prepareDelete(ITEM_INDEX, ITEM_TYPE, String.valueOf(itemId)).get();
 			}
 

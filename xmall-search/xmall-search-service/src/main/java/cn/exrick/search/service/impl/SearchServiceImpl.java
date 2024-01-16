@@ -70,7 +70,7 @@ public class SearchServiceImpl implements SearchService {
 						.highlighter(hiBuilder)		//设置高亮显示
 						.setPostFilter(QueryBuilders.rangeQuery("salePrice").gt(priceGt).lt(priceLte))	//过滤条件
 						.get();
-			}else if(priceGt>=0&&priceLte>=0&&sort.equals("1")){
+			}else if(priceGt>=0&&priceLte>=0&&"1".equals(sort)){
 				searchResponse=client.prepareSearch("item")
 						.setTypes("itemList")
 						.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
@@ -80,7 +80,7 @@ public class SearchServiceImpl implements SearchService {
 						.setPostFilter(QueryBuilders.rangeQuery("salePrice").gt(priceGt).lt(priceLte))	//过滤条件
 						.addSort("salePrice", SortOrder.ASC)
 						.get();
-			}else if(priceGt>=0&&priceLte>=0&&sort.equals("-1")){
+			}else if(priceGt>=0&&priceLte>=0&&"-1".equals(sort)){
 				searchResponse=client.prepareSearch("item")
 						.setTypes("itemList")
 						.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
@@ -98,7 +98,7 @@ public class SearchServiceImpl implements SearchService {
 						.setFrom(start).setSize(size).setExplain(true)	//从第几个开始，显示size个数据
 						.highlighter(hiBuilder)		//设置高亮显示
 						.get();
-			}else if((priceGt<0||priceLte<0)&&sort.equals("1")){
+			}else if((priceGt<0||priceLte<0)&&"1".equals(sort)){
 				searchResponse=client.prepareSearch("item")
 						.setTypes("itemList")
 						.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
@@ -107,7 +107,7 @@ public class SearchServiceImpl implements SearchService {
 						.highlighter(hiBuilder)		//设置高亮显示
 						.addSort("salePrice", SortOrder.ASC)
 						.get();
-			}else if((priceGt<0||priceLte<0)&&sort.equals("-1")){
+			}else if((priceGt<0||priceLte<0)&&"-1".equals(sort)){
 				searchResponse=client.prepareSearch("item")
 						.setTypes("itemList")
 						.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
