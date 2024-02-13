@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +27,7 @@ public class ThanksController {
     @Autowired
     private ThanksService thanksService;
 
-    @RequestMapping(value = "/member/thanks",method = RequestMethod.GET)
+    @GetMapping(value = "/member/thanks")
     @ApiOperation(value = "捐赠列表")
     public Result<DataTablesResult> getThanksList(@RequestParam(defaultValue = "1") int page,
                                                   @RequestParam(defaultValue = "20") int size){

@@ -20,7 +20,7 @@ public class ThanksController {
     @Autowired
     private ThanksService thanksService;
 
-    @RequestMapping(value = "/thanks/list",method = RequestMethod.GET)
+    @GetMapping(value = "/thanks/list")
     @ApiOperation(value = "获取捐赠列表")
     public DataTablesResult getThanksList(){
 
@@ -28,7 +28,7 @@ public class ThanksController {
         return result;
     }
 
-    @RequestMapping(value = "/thanks/count",method = RequestMethod.GET)
+    @GetMapping(value = "/thanks/count")
     @ApiOperation(value = "获取捐赠列表总数")
     public Result<Object> getThanksCount(){
 
@@ -36,7 +36,7 @@ public class ThanksController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/thanks/add",method = RequestMethod.POST)
+    @PostMapping(value = "/thanks/add")
     @ApiOperation(value = "添加捐赠")
     public Result<Object> addThanks(@ModelAttribute TbThanks tbThanks){
 
@@ -44,7 +44,7 @@ public class ThanksController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/thanks/update",method = RequestMethod.POST)
+    @PostMapping(value = "/thanks/update")
     @ApiOperation(value = "编辑捐赠")
     public Result<Object> updateThanks(@ModelAttribute TbThanks tbThanks){
 
@@ -52,7 +52,7 @@ public class ThanksController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/thanks/del/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/thanks/del/{id}")
     @ApiOperation(value = "删除捐赠")
     public Result<Object> delThanks(@PathVariable int id){
 

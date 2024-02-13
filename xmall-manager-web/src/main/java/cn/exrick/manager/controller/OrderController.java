@@ -7,6 +7,8 @@ import cn.exrick.manager.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +24,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/order/list",method = RequestMethod.GET)
+    @GetMapping(value = "/order/list")
     @ApiOperation(value = "获取订单列表")
     public DataTablesResult getOrderList(){
 
@@ -30,7 +32,7 @@ public class OrderController {
         return result;
     }
 
-    @RequestMapping(value = "/order/count",method = RequestMethod.GET)
+    @GetMapping(value = "/order/count")
     @ApiOperation(value = "获取订单总数")
     public Result<Object> getOrderCount(){
 
@@ -38,7 +40,7 @@ public class OrderController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/order/del/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/order/del/{id}")
     @ApiOperation(value = "删除订单")
     public Result<Object> getUserInfo(@PathVariable String id){
 

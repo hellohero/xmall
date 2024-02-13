@@ -38,7 +38,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/geetestInit",method = RequestMethod.GET)
+    @GetMapping(value = "/geetestInit")
     @ApiOperation(value = "极验初始化")
     public String geetesrInit(HttpServletRequest request){
 
@@ -60,7 +60,7 @@ public class UserController {
         return resStr;
     }
 
-    @RequestMapping(value = "/user/login",method = RequestMethod.POST)
+    @PostMapping(value = "/user/login")
     @ApiOperation(value = "用户登录")
     @SystemControllerLog(description="登录系统")
     public Result<Object> login(String username, String password,
@@ -108,7 +108,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user/logout",method = RequestMethod.GET)
+    @GetMapping(value = "/user/logout")
     @ApiOperation(value = "退出登录")
     public Result<Object> logout(){
 
@@ -117,7 +117,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/userInfo",method = RequestMethod.GET)
+    @GetMapping(value = "/user/userInfo")
     @ApiOperation(value = "获取登录用户信息")
     public Result<TbUser> getUserInfo(){
 
@@ -127,7 +127,7 @@ public class UserController {
         return new ResultUtil<TbUser>().setData(tbUser);
     }
 
-    @RequestMapping(value = "/user/roleList",method = RequestMethod.GET)
+    @GetMapping(value = "/user/roleList")
     @ApiOperation(value = "获取角色列表")
     public DataTablesResult getRoleList(){
 
@@ -135,7 +135,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value = "/user/getAllRoles",method = RequestMethod.GET)
+    @GetMapping(value = "/user/getAllRoles")
     @ApiOperation(value = "获取所有角色")
     public Result<List<TbRole>> getAllRoles(){
 
@@ -143,7 +143,7 @@ public class UserController {
         return new ResultUtil<List<TbRole>>().setData(list);
     }
 
-    @RequestMapping(value = "/user/roleName",method = RequestMethod.GET)
+    @GetMapping(value = "/user/roleName")
     @ApiOperation(value = "判断角色是否已存在")
     public boolean roleName(String name){
 
@@ -153,14 +153,14 @@ public class UserController {
         return true;
     }
 
-    @RequestMapping(value = "/user/edit/roleName/{id}",method = RequestMethod.GET)
+    @GetMapping(value = "/user/edit/roleName/{id}")
     @ApiOperation(value = "判断编辑角色是否已存在")
     public boolean roleName(@PathVariable int id,String name){
 
         return userService.getRoleByEditName(id,name);
     }
 
-    @RequestMapping(value = "/user/addRole",method = RequestMethod.POST)
+    @PostMapping(value = "/user/addRole")
     @ApiOperation(value = "添加角色")
     public Result<Object> addRole(@ModelAttribute TbRole tbRole){
 
@@ -168,7 +168,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/updateRole",method = RequestMethod.POST)
+    @PostMapping(value = "/user/updateRole")
     @ApiOperation(value = "更新角色")
     public Result<Object> updateRole(@ModelAttribute TbRole tbRole){
 
@@ -176,7 +176,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/delRole/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/user/delRole/{id}")
     @ApiOperation(value = "删除角色")
     public Result<Object> delRole(@PathVariable int id){
 
@@ -188,7 +188,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/user/roleCount",method = RequestMethod.GET)
+    @GetMapping(value = "/user/roleCount")
     @ApiOperation(value = "统计角色数")
     public Result<Object> getRoleCount(){
 
@@ -196,7 +196,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/user/permissionList",method = RequestMethod.GET)
+    @GetMapping(value = "/user/permissionList")
     @ApiOperation(value = "获取权限列表")
     public DataTablesResult getPermissionList(){
 
@@ -204,7 +204,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value = "/user/addPermission",method = RequestMethod.POST)
+    @PostMapping(value = "/user/addPermission")
     @ApiOperation(value = "添加权限")
     public Result<Object> addPermission(@ModelAttribute TbPermission tbPermission){
 
@@ -212,7 +212,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/updatePermission",method = RequestMethod.POST)
+    @PostMapping(value = "/user/updatePermission")
     @ApiOperation(value = "更新权限")
     public Result<Object> updatePermission(@ModelAttribute TbPermission tbPermission){
 
@@ -220,7 +220,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/delPermission/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/user/delPermission/{id}")
     @ApiOperation(value = "删除权限")
     public Result<Object> delPermission(@PathVariable int id){
 
@@ -228,7 +228,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/permissionCount",method = RequestMethod.GET)
+    @GetMapping(value = "/user/permissionCount")
     @ApiOperation(value = "统计权限数")
     public Result<Object> getPermissionCount(){
 
@@ -236,7 +236,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/user/userList",method = RequestMethod.GET)
+    @GetMapping(value = "/user/userList")
     @ApiOperation(value = "获取用户列表")
     public DataTablesResult getUserList(){
 
@@ -244,28 +244,28 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value = "/user/username",method = RequestMethod.GET)
+    @GetMapping(value = "/user/username")
     @ApiOperation(value = "判断用户名是否存在")
     public boolean getUserByName(String username){
 
         return userService.getUserByName(username);
     }
 
-    @RequestMapping(value = "/user/phone",method = RequestMethod.GET)
+    @GetMapping(value = "/user/phone")
     @ApiOperation(value = "判断手机是否存在")
     public boolean getUserByPhone(String phone){
 
         return userService.getUserByPhone(phone);
     }
 
-    @RequestMapping(value = "/user/email",method = RequestMethod.GET)
+    @GetMapping(value = "/user/email")
     @ApiOperation(value = "判断邮箱是否存在")
     public boolean getUserByEmail(String email){
 
         return userService.getUserByEmail(email);
     }
 
-    @RequestMapping(value = "/user/addUser",method = RequestMethod.POST)
+    @PostMapping(value = "/user/addUser")
     @ApiOperation(value = "添加用户")
     public Result<Object> addUser(@ModelAttribute TbUser tbUser){
 
@@ -273,7 +273,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/updateUser",method = RequestMethod.POST)
+    @PostMapping(value = "/user/updateUser")
     @ApiOperation(value = "更新用户")
     public Result<Object> updateUser(@ModelAttribute TbUser tbUser){
 
@@ -281,28 +281,28 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/edit/username/{id}",method = RequestMethod.GET)
+    @GetMapping(value = "/user/edit/username/{id}")
     @ApiOperation(value = "判断编辑用户名是否存在")
     public boolean getUserByEditName(@PathVariable Long id, String username){
 
         return userService.getUserByEditName(id,username);
     }
 
-    @RequestMapping(value = "/user/edit/phone/{id}",method = RequestMethod.GET)
+    @GetMapping(value = "/user/edit/phone/{id}")
     @ApiOperation(value = "判断编辑手机是否存在")
     public boolean getUserByEditPhone(@PathVariable Long id, String phone){
 
         return userService.getUserByEditPhone(id,phone);
     }
 
-    @RequestMapping(value = "/user/edit/email/{id}",method = RequestMethod.GET)
+    @GetMapping(value = "/user/edit/email/{id}")
     @ApiOperation(value = "判断编辑用户名是否存在")
     public boolean getUserByEditEmail(@PathVariable Long id, String email){
 
         return userService.getUserByEditEmail(id,email);
     }
 
-    @RequestMapping(value = "/user/stop/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/user/stop/{id}")
     @ApiOperation(value = "停用用户")
     public Result<Object> stopUser(@PathVariable Long id){
 
@@ -310,7 +310,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/start/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/user/start/{id}")
     @ApiOperation(value = "启用用户")
     public Result<Object> startUser(@PathVariable Long id){
 
@@ -318,7 +318,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/changePass",method = RequestMethod.POST)
+    @PostMapping(value = "/user/changePass")
     @ApiOperation(value = "修改用户密码")
     public Result<Object> changePass(@ModelAttribute TbUser tbUser){
 
@@ -326,7 +326,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/delUser/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/user/delUser/{id}")
     @ApiOperation(value = "删除用户")
     public Result<Object> delUser(@PathVariable Long id){
 
@@ -334,7 +334,7 @@ public class UserController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/user/userCount",method = RequestMethod.GET)
+    @GetMapping(value = "/user/userCount")
     @ApiOperation(value = "统计用户数")
     public Result<Object> getUserCount(){
 

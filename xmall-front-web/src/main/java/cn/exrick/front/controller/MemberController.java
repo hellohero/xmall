@@ -32,7 +32,7 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @RequestMapping(value = "/member/geetestInit",method = RequestMethod.GET)
+    @GetMapping(value = "/member/geetestInit")
     @ApiOperation(value = "极验初始化")
     public String geetesrInit(HttpServletRequest request){
 
@@ -54,7 +54,7 @@ public class MemberController {
         return resStr;
     }
 
-    @RequestMapping(value = "/member/login",method = RequestMethod.POST)
+    @PostMapping(value = "/member/login")
     @ApiOperation(value = "用户登录")
     public Result<Member> login(@RequestBody MemberLoginRegist memberLoginRegist,
                                 HttpServletRequest request){
@@ -98,7 +98,7 @@ public class MemberController {
         return new ResultUtil<Member>().setData(member);
     }
 
-    @RequestMapping(value = "/member/checkLogin",method = RequestMethod.GET)
+    @GetMapping(value = "/member/checkLogin")
     @ApiOperation(value = "判断用户是否登录")
     public Result<Member> checkLogin(@RequestParam(defaultValue = "") String token){
 
@@ -106,7 +106,7 @@ public class MemberController {
         return new ResultUtil<Member>().setData(member);
     }
 
-    @RequestMapping(value = "/member/loginOut",method = RequestMethod.GET)
+    @GetMapping(value = "/member/loginOut")
     @ApiOperation(value = "退出登录")
     public Result<Object> logout(@RequestParam(defaultValue = "") String token){
 
@@ -114,7 +114,7 @@ public class MemberController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/member/register",method = RequestMethod.POST)
+    @PostMapping(value = "/member/register")
     @ApiOperation(value = "用户注册")
     public Result<Object> register(@RequestBody MemberLoginRegist memberLoginRegist,
                                    HttpServletRequest request){
@@ -161,7 +161,7 @@ public class MemberController {
         }
     }
 
-    @RequestMapping(value = "/member/imgaeUpload",method = RequestMethod.POST)
+    @PostMapping(value = "/member/imgaeUpload")
     @ApiOperation(value = "用户头像上传")
     public Result<Object> imgaeUpload(@RequestBody CommonDto common){
 

@@ -17,7 +17,7 @@ public class ContentImageController {
     @Autowired
     private ContentImageService contentImageService;
 
-    @RequestMapping(value = "/image/list",method = RequestMethod.GET)
+    @GetMapping(value = "/image/list")
     @ApiOperation(value = "通过获得图片列表")
     public DataTablesResult getContentImage(){
 
@@ -25,7 +25,7 @@ public class ContentImageController {
         return result;
     }
 
-    @RequestMapping(value = "/image/update",method = RequestMethod.POST)
+    @PostMapping(value = "/image/update")
     @ApiOperation(value = "编辑图片")
     public Result<Object> updateContentImage(@ModelAttribute TbImage tbImage){
 

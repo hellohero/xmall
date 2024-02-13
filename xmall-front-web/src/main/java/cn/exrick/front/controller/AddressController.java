@@ -7,6 +7,7 @@ import cn.exrick.sso.service.AddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +21,7 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @RequestMapping(value = "/member/addressList",method = RequestMethod.POST)
+    @PostMapping(value = "/member/addressList")
     @ApiOperation(value = "获得所有收货地址")
     public Result<List<TbAddress>> addressList(@RequestBody TbAddress tbAddress){
 
@@ -28,7 +29,7 @@ public class AddressController {
         return new ResultUtil<List<TbAddress>>().setData(list);
     }
 
-    @RequestMapping(value = "/member/address",method = RequestMethod.POST)
+    @PostMapping(value = "/member/address")
     @ApiOperation(value = "通过id获得收货地址")
     public Result<TbAddress> address(@RequestBody TbAddress tbAddress){
 
@@ -36,7 +37,7 @@ public class AddressController {
         return new ResultUtil<TbAddress>().setData(address);
     }
 
-    @RequestMapping(value = "/member/addAddress",method = RequestMethod.POST)
+    @PostMapping(value = "/member/addAddress")
     @ApiOperation(value = "添加收货地址")
     public Result<Object> addAddress(@RequestBody TbAddress tbAddress){
 
@@ -44,7 +45,7 @@ public class AddressController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/member/updateAddress",method = RequestMethod.POST)
+    @PostMapping(value = "/member/updateAddress")
     @ApiOperation(value = "编辑收货地址")
     public Result<Object> updateAddress(@RequestBody TbAddress tbAddress){
 
@@ -52,7 +53,7 @@ public class AddressController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/member/delAddress",method = RequestMethod.POST)
+    @PostMapping(value = "/member/delAddress")
     @ApiOperation(value = "删除收货地址")
     public Result<Object> delAddress(@RequestBody TbAddress tbAddress){
 

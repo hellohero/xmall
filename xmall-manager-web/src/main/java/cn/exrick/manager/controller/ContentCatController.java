@@ -24,7 +24,7 @@ public class ContentCatController {
     @Autowired
     private ContentCatService contentCatService;
 
-    @RequestMapping(value = "/content/cat/list",method = RequestMethod.GET)
+    @GetMapping(value = "/content/cat/list")
     @ApiOperation(value = "获得分类列表")
     public List<ZTreeNode> getContentByCid(@RequestParam(name="id", defaultValue="0") Long parentId){
 
@@ -32,7 +32,7 @@ public class ContentCatController {
         return list;
     }
 
-    @RequestMapping(value = "/content/cat/add",method = RequestMethod.POST)
+    @PostMapping(value = "/content/cat/add")
     @ApiOperation(value = "添加内容分类")
     public Result<Object> addContentCategory(@ModelAttribute ContentCatDto contentCatDto){
 
@@ -40,7 +40,7 @@ public class ContentCatController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/content/cat/update",method = RequestMethod.POST)
+    @PostMapping(value = "/content/cat/update")
     @ApiOperation(value = "编辑内容分类")
     public Result<Object> updateContentCategory(@ModelAttribute ContentCatDto contentCatDto){
 
@@ -48,7 +48,7 @@ public class ContentCatController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/content/cat/del/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/content/cat/del/{id}")
     @ApiOperation(value = "删除内容分类")
     public Result<Object> deleteContentCategory(@PathVariable Long id){
 

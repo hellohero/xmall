@@ -22,7 +22,7 @@ public class ItemCatController {
     @Autowired
     private ItemCatService itemCatService;
 
-    @RequestMapping(value = "/item/cat/list",method = RequestMethod.GET)
+    @GetMapping(value = "/item/cat/list")
     @ApiOperation(value = "通过父ID获取商品分类列表")
     public List<ZTreeNode> getItemCatList(@RequestParam(name="id",defaultValue = "0") int parentId){
 
@@ -30,7 +30,7 @@ public class ItemCatController {
         return list;
     }
 
-    @RequestMapping(value = "/item/cat/add",method = RequestMethod.POST)
+    @PostMapping(value = "/item/cat/add")
     @ApiOperation(value = "添加商品分类")
     public Result<Object> addItemCategory(@ModelAttribute TbItemCat tbItemCat){
 
@@ -38,7 +38,7 @@ public class ItemCatController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/item/cat/update",method = RequestMethod.POST)
+    @PostMapping(value = "/item/cat/update")
     @ApiOperation(value = "编辑商品分类")
     public Result<Object> updateItemCategory(@ModelAttribute TbItemCat tbItemCat){
 
@@ -46,7 +46,7 @@ public class ItemCatController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/item/cat/del/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/item/cat/del/{id}")
     @ApiOperation(value = "删除商品分类")
     public Result<Object> deleteItemCategory(@PathVariable Long id){
 

@@ -19,7 +19,7 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @RequestMapping(value = "/member/addCart",method = RequestMethod.POST)
+    @PostMapping(value = "/member/addCart")
     @ApiOperation(value = "添加购物车商品")
     public Result<Object> addCart(@RequestBody Cart cart){
 
@@ -27,7 +27,7 @@ public class CartController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/member/cartList",method = RequestMethod.POST)
+    @PostMapping(value = "/member/cartList")
     @ApiOperation(value = "获取购物车商品列表")
     public Result<List<CartProduct>> getCartList(@RequestBody Cart cart){
 
@@ -35,7 +35,7 @@ public class CartController {
         return new ResultUtil<List<CartProduct>>().setData(list);
     }
 
-    @RequestMapping(value = "/member/cartEdit",method = RequestMethod.POST)
+    @PostMapping(value = "/member/cartEdit")
     @ApiOperation(value = "编辑购物车商品")
     public Result<Object> updateCartNum(@RequestBody Cart cart){
 
@@ -43,7 +43,7 @@ public class CartController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/member/editCheckAll",method = RequestMethod.POST)
+    @PostMapping(value = "/member/editCheckAll")
     @ApiOperation(value = "是否全选购物车商品")
     public Result<Object> editCheckAll(@RequestBody Cart cart){
 
@@ -51,7 +51,7 @@ public class CartController {
         return new ResultUtil<Object>().setData(result);
     }
 
-    @RequestMapping(value = "/member/cartDel",method = RequestMethod.POST)
+    @PostMapping(value = "/member/cartDel")
     @ApiOperation(value = "删除购物车商品")
     public Result<Object> deleteCartItem(@RequestBody Cart cart){
 

@@ -6,6 +6,7 @@ import cn.exrick.common.utils.QiniuUtil;
 import cn.exrick.common.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,7 @@ import java.io.IOException;
 @Api(description = "图片上传统一接口")
 public class ImageController {
 
-    @RequestMapping(value = "/image/imageUpload",method = RequestMethod.POST)
+    @PostMapping(value = "/image/imageUpload")
     @ApiOperation(value = "WebUploader图片上传")
     public Result<Object> uploadFile(@RequestParam("file") MultipartFile files,
                                      HttpServletRequest request){
@@ -46,7 +47,7 @@ public class ImageController {
         return new ResultUtil<Object>().setData(imagePath);
     }
 
-    @RequestMapping(value = "/kindeditor/imageUpload",method = RequestMethod.POST)
+    @PostMapping(value = "/kindeditor/imageUpload")
     @ApiOperation(value = "KindEditor图片上传")
     public KindEditorResult kindeditor(@RequestParam("imgFile") MultipartFile files, HttpServletRequest request){
 

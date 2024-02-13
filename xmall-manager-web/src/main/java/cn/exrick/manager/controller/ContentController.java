@@ -17,7 +17,7 @@ public class ContentController {
     @Autowired
     private ContentService contentService;
 
-    @RequestMapping(value = "/content/list/{cid}",method = RequestMethod.GET)
+    @GetMapping(value = "/content/list/{cid}")
     @ApiOperation(value = "通过cid获得内容列表")
     public DataTablesResult getContentByCid(@PathVariable Long cid){
 
@@ -25,7 +25,7 @@ public class ContentController {
         return result;
     }
 
-    @RequestMapping(value = "/content/add",method = RequestMethod.POST)
+    @PostMapping(value = "/content/add")
     @ApiOperation(value = "添加内容")
     public Result<Object> addContent(@ModelAttribute TbContent tbContent){
 
@@ -33,7 +33,7 @@ public class ContentController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/content/update",method = RequestMethod.POST)
+    @PostMapping(value = "/content/update")
     @ApiOperation(value = "编辑内容")
     public Result<Object> updateContent(@ModelAttribute TbContent tbContent){
 
@@ -41,7 +41,7 @@ public class ContentController {
         return new ResultUtil<Object>().setData(null);
     }
 
-    @RequestMapping(value = "/content/del/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/content/del/{id}")
     @ApiOperation(value = "删除内容")
     public Result<Object> addContent(@PathVariable Long id){
 

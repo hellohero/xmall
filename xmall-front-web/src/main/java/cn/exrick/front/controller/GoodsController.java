@@ -25,7 +25,7 @@ public class GoodsController {
     @Autowired
     private SearchItemService searchItemService;
 
-    @RequestMapping(value = "/goods/productHome",method = RequestMethod.GET)
+    @GetMapping(value = "/goods/productHome")
     @ApiOperation(value = "首页商品展示")
     public Result<ProductHome> getProductHome(){
 
@@ -33,7 +33,7 @@ public class GoodsController {
         return new ResultUtil<ProductHome>().setData(productHome);
     }
 
-    @RequestMapping(value = "/goods/productDet",method = RequestMethod.GET)
+    @GetMapping(value = "/goods/productDet")
     @ApiOperation(value = "商品详情")
     public Result<ProductDet> getProductDet(Long productId){
 
@@ -41,7 +41,7 @@ public class GoodsController {
         return new ResultUtil<ProductDet>().setData(productDet);
     }
 
-    @RequestMapping(value = "/goods/allGoods",method = RequestMethod.GET)
+    @GetMapping(value = "/goods/allGoods")
     @ApiOperation(value = "所有商品")
     public Result<AllGoodsResult> getAllProduct(@RequestParam(defaultValue = "1") int page,
                                                 @RequestParam(defaultValue = "20") int size,
@@ -53,7 +53,7 @@ public class GoodsController {
         return new ResultUtil<AllGoodsResult>().setData(allGoodsResult);
     }
 
-    @RequestMapping(value = "/goods/search",method = RequestMethod.GET)
+    @GetMapping(value = "/goods/search")
     @ApiOperation(value = "搜索商品ES")
     public Result<SearchResult> searchProduct(@RequestParam(defaultValue = "") String key,
                                               @RequestParam(defaultValue = "1") int page,
@@ -66,7 +66,7 @@ public class GoodsController {
         return new ResultUtil<SearchResult>().setData(searchResult);
     }
 
-    @RequestMapping(value = "/goods/importIndex",method = RequestMethod.GET)
+    @GetMapping(value = "/goods/importIndex")
     @ApiOperation(value = "导入商品索引至ES")
     public String searchProduct(){
 

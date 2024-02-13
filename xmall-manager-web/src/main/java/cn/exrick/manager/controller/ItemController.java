@@ -25,7 +25,7 @@ public class ItemController{
     @Autowired
     private ItemService itemService;
 
-    @RequestMapping(value = "/item/{itemId}",method = RequestMethod.GET)
+    @GetMapping(value = "/item/{itemId}")
     @ApiOperation(value = "通过ID获取商品")
     public Result<ItemDto> getItemById(@PathVariable Long itemId){
 
@@ -33,7 +33,7 @@ public class ItemController{
         return new ResultUtil<ItemDto>().setData(itemDto);
     }
 
-    @RequestMapping(value = "/item/list",method = RequestMethod.GET)
+    @GetMapping(value = "/item/list")
     @ApiOperation(value = "分页搜索排序获取商品列表")
     public DataTablesResult getItemList(int draw, int start, int length, int cid, @RequestParam("search[value]") String search,
                                         @RequestParam("order[0][column]") int orderCol, @RequestParam("order[0][dir]") String orderDir,
@@ -54,7 +54,7 @@ public class ItemController{
         return result;
     }
 
-    @RequestMapping(value = "/item/listSearch",method = RequestMethod.GET)
+    @GetMapping(value = "/item/listSearch")
     @ApiOperation(value = "多条件分页搜索排序获取商品列表")
     public DataTablesResult getItemSearchList(int draw, int start, int length,int cid,String searchKey,String minDate,String maxDate,
                                               @RequestParam("search[value]") String search, @RequestParam("order[0][column]") int orderCol,
@@ -78,7 +78,7 @@ public class ItemController{
         return result;
     }
 
-    @RequestMapping(value = "/item/count",method = RequestMethod.GET)
+    @GetMapping(value = "/item/count")
     @ApiOperation(value = "获得商品总数目")
     public DataTablesResult getAllItemCount(){
 
@@ -86,7 +86,7 @@ public class ItemController{
         return result;
     }
 
-    @RequestMapping(value = "/item/stop/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/item/stop/{id}")
     @ApiOperation(value = "下架商品")
     public Result<TbItem> stopItem(@PathVariable Long id){
 
@@ -94,7 +94,7 @@ public class ItemController{
         return new ResultUtil<TbItem>().setData(tbItem);
     }
 
-    @RequestMapping(value = "/item/start/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/item/start/{id}")
     @ApiOperation(value = "发布商品")
     public Result<TbItem> startItem(@PathVariable Long id){
 
@@ -102,7 +102,7 @@ public class ItemController{
         return new ResultUtil<TbItem>().setData(tbItem);
     }
 
-    @RequestMapping(value = "/item/del/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/item/del/{id}")
     @ApiOperation(value = "删除商品")
     public Result<TbItem> deleteItem(@PathVariable Long id){
 
@@ -110,7 +110,7 @@ public class ItemController{
         return new ResultUtil<TbItem>().setData(null);
     }
 
-    @RequestMapping(value = "/item/add",method = RequestMethod.POST)
+    @PostMapping(value = "/item/add")
     @ApiOperation(value = "添加商品")
     public Result<TbItem> addItem(ItemDto itemDto){
 
@@ -118,7 +118,7 @@ public class ItemController{
         return new ResultUtil<TbItem>().setData(tbItem);
     }
 
-    @RequestMapping(value = "/item/update/{id}",method = RequestMethod.POST)
+    @PostMapping(value = "/item/update/{id}")
     @ApiOperation(value = "编辑商品")
     public Result<TbItem> updateItem(@PathVariable Long id, ItemDto itemDto){
 

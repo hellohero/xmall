@@ -28,7 +28,7 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @RequestMapping(value = "/member/list",method = RequestMethod.GET)
+    @GetMapping(value = "/member/list")
     @ApiOperation(value = "分页多条件搜索获取会员列表")
     public DataTablesResult getMemberList(int draw, int start, int length, String searchKey, @RequestParam("search[value]") String search,
                                           String minDate, String maxDate,
@@ -52,7 +52,7 @@ public class MemberController {
         return result;
     }
 
-    @RequestMapping(value = "/member/list/remove",method = RequestMethod.GET)
+    @GetMapping(value = "/member/list/remove")
     @ApiOperation(value = "分页多条件搜索已删除会员列表")
     public DataTablesResult getDelMemberList(int draw, int start, int length,String searchKey,@RequestParam("search[value]") String search,
                                              String minDate, String maxDate,
@@ -76,21 +76,21 @@ public class MemberController {
         return result;
     }
 
-    @RequestMapping(value = "/member/count",method = RequestMethod.GET)
+    @GetMapping(value = "/member/count")
     @ApiOperation(value = "获得总会员数目")
     public DataTablesResult getMemberCount(){
 
         return memberService.getMemberCount();
     }
 
-    @RequestMapping(value = "/member/count/remove",method = RequestMethod.GET)
+    @GetMapping(value = "/member/count/remove")
     @ApiOperation(value = "获得移除总会员数目")
     public DataTablesResult getRemoveMemberCount(){
 
         return memberService.getRemoveMemberCount();
     }
 
-    @RequestMapping(value = "/member/add",method = RequestMethod.POST)
+    @PostMapping(value = "/member/add")
     @ApiOperation(value = "添加会员")
     public Result<TbMember> createMember(@ModelAttribute MemberDto memberDto){
 
@@ -98,7 +98,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(newTbMember);
     }
 
-    @RequestMapping(value = "/member/stop/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/member/stop/{id}")
     @ApiOperation(value = "停用会员")
     public Result<TbMember> stopMember(@PathVariable Long id){
 
@@ -106,7 +106,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(tbMember);
     }
 
-    @RequestMapping(value = "/member/start/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/member/start/{id}")
     @ApiOperation(value = "启用会员")
     public Result<TbMember> startMember(@PathVariable Long id){
 
@@ -114,7 +114,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(tbMember);
     }
 
-    @RequestMapping(value = "/member/remove/{id}",method = RequestMethod.PUT)
+    @PutMapping(value = "/member/remove/{id}")
     @ApiOperation(value = "移除会员")
     public Result<TbMember> removeMember(@PathVariable Long id){
 
@@ -122,7 +122,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(tbMember);
     }
 
-    @RequestMapping(value = "/member/del/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/member/del/{id}")
     @ApiOperation(value = "彻底删除会员")
     public Result<TbMember> deleteMember(@PathVariable Long id){
 
@@ -130,7 +130,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(null);
     }
 
-    @RequestMapping(value = "/member/changePass/{id}",method = RequestMethod.POST)
+    @PostMapping(value = "/member/changePass/{id}")
     @ApiOperation(value = "修改会员密码")
     public Result<TbMember> changeMemberPassword(@PathVariable Long id,@ModelAttribute MemberDto memberDto){
 
@@ -138,7 +138,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(tbMember);
     }
 
-    @RequestMapping(value = "/member/update/{id}",method = RequestMethod.POST)
+    @PostMapping(value = "/member/update/{id}")
     @ApiOperation(value = "修改会员信息")
     public Result<TbMember> updateMember(@PathVariable Long id,@ModelAttribute MemberDto memberDto){
 
@@ -146,7 +146,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(tbMember);
     }
 
-    @RequestMapping(value = "/member/{id}",method = RequestMethod.GET)
+    @GetMapping(value = "/member/{id}")
     @ApiOperation(value = "通过ID获取会员信息")
     public Result<TbMember> getMemberById(@PathVariable Long id){
 
@@ -154,7 +154,7 @@ public class MemberController {
         return new ResultUtil<TbMember>().setData(tbMember);
     }
 
-    @RequestMapping(value = "/member/username",method = RequestMethod.GET)
+    @GetMapping(value = "/member/username")
     @ApiOperation(value = "验证注册名是否存在")
     public Boolean validateUsername(String username){
 
@@ -164,7 +164,7 @@ public class MemberController {
         return true;
     }
 
-    @RequestMapping(value = "/member/phone",method = RequestMethod.GET)
+    @GetMapping(value = "/member/phone")
     @ApiOperation(value = "验证注册手机是否存在")
     public Boolean validatePhone(String phone){
 
@@ -174,7 +174,7 @@ public class MemberController {
         return true;
     }
 
-    @RequestMapping(value = "/member/email",method = RequestMethod.GET)
+    @GetMapping(value = "/member/email")
     @ApiOperation(value = "验证注册邮箱是否存在")
     public Boolean validateEmail(String email){
 
@@ -184,7 +184,7 @@ public class MemberController {
         return true;
     }
 
-    @RequestMapping(value = "/member/edit/{id}/username",method = RequestMethod.GET)
+    @GetMapping(value = "/member/edit/{id}/username")
     @ApiOperation(value = "验证编辑用户名是否存在")
     public Boolean validateEditUsername(@PathVariable Long id,String username){
 
@@ -194,7 +194,7 @@ public class MemberController {
         return true;
     }
 
-    @RequestMapping(value = "/member/edit/{id}/phone",method = RequestMethod.GET)
+    @GetMapping(value = "/member/edit/{id}/phone")
     @ApiOperation(value = "验证编辑手机是否存在")
     public Boolean validateEditPhone(@PathVariable Long id,String phone){
 
@@ -204,7 +204,7 @@ public class MemberController {
         return true;
     }
 
-    @RequestMapping(value = "/member/edit/{id}/email",method = RequestMethod.GET)
+    @GetMapping(value = "/member/edit/{id}/email")
     @ApiOperation(value = "验证编辑邮箱是否存在")
     public Boolean validateEditEmail(@PathVariable Long id,String email){
 
