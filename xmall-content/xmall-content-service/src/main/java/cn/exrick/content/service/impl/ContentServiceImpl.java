@@ -342,10 +342,10 @@ public class ContentServiceImpl implements ContentService {
         if(sort.isEmpty()||sort==null){
             orderCol="created";
             orderDir="desc";
-        }else if(sort.equals("1")){
+        }else if("1".equals(sort)){
             orderCol="price";
             orderDir="asc";
-        }else if(sort.equals("-1")){
+        }else if("-1".equals(sort)){
             orderCol="price";
             orderDir="desc";
         }

@@ -56,7 +56,7 @@ public class ImageController {
                 + QiniuUtil.renamePic(files.getOriginalFilename());
         //检查文件
         String message=QiniuUtil.isValidImage(request,files);
-        if(!message.equals("valid")){
+        if(!"valid".equals(message)){
             kindEditorResult.setError(1);
             kindEditorResult.setMessage(message);
             return kindEditorResult;
