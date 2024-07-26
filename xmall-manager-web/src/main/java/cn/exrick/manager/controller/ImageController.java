@@ -4,6 +4,7 @@ import cn.exrick.common.pojo.KindEditorResult;
 import cn.exrick.common.pojo.Result;
 import cn.exrick.common.utils.QiniuUtil;
 import cn.exrick.common.utils.ResultUtil;
+import io.github.pixee.security.Filenames;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ public class ImageController {
         String imagePath=null;
         // 文件保存路径
         String filePath = request.getSession().getServletContext().getRealPath("/upload")+"\\"
-                + QiniuUtil.renamePic(files.getOriginalFilename());
+                + QiniuUtil.renamePic(Filenames.toSimpleFileName(files.getOriginalFilename()));
         // 转存文件
         try {
             //保存至服务器
@@ -53,7 +54,7 @@ public class ImageController {
         KindEditorResult kindEditorResult=new KindEditorResult();
         // 文件保存路径
         String filePath = request.getSession().getServletContext().getRealPath("/upload")+"\\"
-                + QiniuUtil.renamePic(files.getOriginalFilename());
+                + QiniuUtil.renamePic(Filenames.toSimpleFileName(files.getOriginalFilename()));
         //检查文件
         String message=QiniuUtil.isValidImage(request,files);
         if(!message.equals("valid")){
