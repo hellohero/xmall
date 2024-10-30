@@ -10,6 +10,7 @@ import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import com.qiniu.util.StringMap;
 import com.qiniu.util.UrlSafeBase64;
+import io.github.pixee.security.Filenames;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -133,7 +134,7 @@ public class QiniuUtil {
             return "上传文件大小超过5MB限制";
         }
         //检查扩展名
-        String fileName=file.getOriginalFilename();
+        String fileName=Filenames.toSimpleFileName(file.getOriginalFilename());
         String fileExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
         if(!Arrays.<String>asList(extMap.get("image").split(",")).contains(fileExt)){
             return "上传文件扩展名是不允许的扩展名\n只允许" + extMap.get("image") + "格式";
