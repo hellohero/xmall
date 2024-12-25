@@ -1,5 +1,6 @@
 package cn.exrick.common.utils;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -13,7 +14,7 @@ public class IDUtil {
     public static long getRandomId() {
         long millis = System.currentTimeMillis();
         //加上两位随机数
-        Random random = new Random();
+        Random random = new SecureRandom();
         int end2 = random.nextInt(99);
         //如果不足两位前面补0
         String str = millis + String.format("%02d", end2);
