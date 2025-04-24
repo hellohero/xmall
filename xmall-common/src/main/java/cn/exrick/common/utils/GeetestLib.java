@@ -1,5 +1,7 @@
 package cn.exrick.common.utils;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -435,7 +437,7 @@ public class GeetestLib {
 	 */
 	private String readContentFromGet(String URL) throws IOException {
 
-		URL getUrl = new URL(URL);
+		URL getUrl = Urls.create(URL, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 		HttpURLConnection connection = (HttpURLConnection) getUrl
 				.openConnection();
 
@@ -476,7 +478,7 @@ public class GeetestLib {
 	private String readContentFromPost(String URL, String data) throws IOException {
 		
 		gtlog(data);
-		URL postUrl = new URL(URL);
+		URL postUrl = Urls.create(URL, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 		HttpURLConnection connection = (HttpURLConnection) postUrl
 				.openConnection();
 
